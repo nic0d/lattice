@@ -23,7 +23,7 @@ var _ = AfterSuite(func() {
 	gexec.CleanupBuildArtifacts()
 })
 
-var _ = Describe("lattice-cli", func() {
+var _ = Describe("ltc", func() {
 	It("compiles and displays help text", func() {
 		command := exec.Command(cli)
 

@@ -45,7 +45,7 @@ var _ = Describe("IntegrationTestCommandFactory", func() {
 			Expect(fakeIntegrationTestRunner.RunCallCount()).To(Equal(1))
 			timeoutArg, verboseArg := fakeIntegrationTestRunner.GetArgsForRun()
 			Expect(timeoutArg).To(Equal(time.Minute * 2))
-			Expect(verboseArg).To(Equal(false))
+			Expect(verboseArg).To(BeFalse())
 		})
 
 	})

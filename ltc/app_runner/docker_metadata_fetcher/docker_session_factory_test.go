@@ -67,8 +67,7 @@ var _ = Describe("DockerSessionFactory", func() {
 			It("returns errors from resolving the repo name", func() {
 				_, err := sessionFactory.MakeSession("¥Not-A-Valid-Repo-Name¥"+"/lattice-mappppppppppppappapapa", false)
 
-				Expect(err).To(HaveOccurred())
-				Expect(err.Error()).To(MatchRegexp("Error resolving Docker repository name:\nInvalid namespace name"))
+				Expect(err).To(MatchError(ContainSubstring("Error resolving Docker repository name:\nInvalid namespace name")))
 			})
 		})
 
@@ -76,8 +75,7 @@ var _ = Describe("DockerSessionFactory", func() {
 			It("returns an error", func() {
 				_, err := sessionFactory.MakeSession("nonexistantregistry.example.com/lattice-mappppppppppppappapapa", false)
 
-				Expect(err).To(HaveOccurred())
-				Expect(err.Error()).To(MatchRegexp("Error Connecting to Docker registry:\ninvalid registry endpoint"))
+				Expect(err).To(MatchError(ContainSubstring("Error Connecting to Docker registry:\ninvalid registry endpoint")))
 			})
 		})
 

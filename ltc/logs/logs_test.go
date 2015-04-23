@@ -131,6 +131,7 @@ var _ = Describe("logs", func() {
 
 			go consumer.sendToInboundErrorStream(errors.New("error 1"))
 			Eventually(errorReceiver.GetErrors).Should(Equal([]error{errors.New("error 1")}))
+			// Eventually(errorReceiver.GetErrors).Should(Equal(ConsistOf(errors.New("error 1"))))
 
 			go consumer.sendToInboundErrorStream(errors.New("error 2"))
 
